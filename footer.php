@@ -1,6 +1,7 @@
 <?php if( _hui('layout') == 'ui-navtop' ){ ?>
 </div>
 </section>
+<div class="rollto"><a href="javascript:;"></a></div>
 <?php } ?>
 <footer class="footer">
     &copy; <?php echo date('Y'); ?> <a href="<?php bloginfo('url'); ?>"><?php bloginfo('name'); ?></a> &nbsp; <?php echo _hui('footer_seo') ?>

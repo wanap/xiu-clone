@@ -47,6 +47,9 @@ jQuery.cookie = function(name, value, options) {
 };
 
 +(function($) {
+    var islogin = false;
+    if( $('body').hasClass('logged-in') ) islogin = true;
+
     var LS={
         get:function(dataKey){          
             if(window.localStorage){
@@ -71,321 +74,272 @@ jQuery.cookie = function(name, value, options) {
         }
     }
 
-
-    $('body').append('<div class="rollto"><a href="javascript:;"></a></div>')
-
-    // lazy avatar
-    $('.content .avatar').lazyload({
-        placeholder: jui.uri + '/images/avatar-default.png',
-        event: 'scrollstop'
-    });
-
-    $('.sidebar .avatar').lazyload({
-        placeholder: jui.uri + '/images/avatar-default.png',
-        event: 'scrollstop'
-    });
-
-    $('.content .thumb').lazyload({
-        placeholder: jui.uri + '/images/thumbnail.png',
-        event: 'scrollstop'
-    });
-
-    $('.sidebar .thumb').lazyload({
-        placeholder: jui.uri + '/images/thumbnail.png',
-        event: 'scrollstop'
-    });
-
-    $('.content .wp-smiley').lazyload({
-        event: 'scrollstop'
-    });
-
-    $('.sidebar .wp-smiley').lazyload({
-        event: 'scrollstop'
-    });
-
-
-    var elments = {
-        sidebar: $('.sidebar'),
-        footer: $('.footer')
+    function init() {
+        bindEvents();
+        initLazyLoad();
+        initAjaxScroll();
+        initToolTip();
+        initBaiduShare();
+        initScroll();
+        initSidebarAffix();
+        initSearchResult();
     }
 
-    $('.feed-weixin').popover({
-        placement: $('body').hasClass('ui-navtop')?'bottom':'right',
-        trigger: 'hover',
-        container: 'body',
-        html: true
-    })
+    init();
 
-    if( Number(jui.ajaxpager) ){
-        $.ias({
-            triggerPageThreshold: jui.ajaxpager?Number(jui.ajaxpager)+1:5,
-            history: false,
-            container : '.content',
-            item: '.excerpt',
-            pagination: '.pagination',
-            next: '.next-page a',
-            loader: '<div class="pagination-loading"><img src="'+jui.uri+'/images/ajax-loader.gif"></div>',
-            trigger: 'More',
-            onRenderComplete: function() {
-                $('.excerpt .thumb').lazyload({
-                    placeholder: jui.uri + '/images/thumbnail.png',
-                    threshold: 400
-                });
-            }
+    function initLazyLoad() {
+        // lazy avatar
+        $('.avatar').lazyload({
+            placeholder: jui.uri + '/images/avatar-default.png',
+            event: 'scrollstop'
+        });
+
+        $('.thumb').lazyload({
+            placeholder: jui.uri + '/images/thumbnail.png',
+            event: 'scrollstop'
+        });
+
+        $('.wp-smiley').lazyload({
+            event: 'scrollstop'
         });
     }
 
-
-    /* 
-     * page search
-     * ====================================================
-    */
-    if( $('body').hasClass('search-results') ){
-        var val = $('.search-form .form-control').val()
-        var reg = eval('/'+val+'/i')
-        $('.excerpt h2 a, .excerpt .note').each(function(){
-            $(this).html( $(this).text().replace(reg, function(w){ return '<span style="color:#FF5E52;">'+w+'</span>' }) )
-        })
+    function initAjaxScroll() {
+        if( Number(jui.ajaxpager) ){
+            $.ias({
+                triggerPageThreshold: jui.ajaxpager?Number(jui.ajaxpager)+1:5,
+                history: false,
+                container : '.content',
+                item: '.excerpt',
+                pagination: '.pagination',
+                next: '.next-page a',
+                loader: '<div class="pagination-loading"><img src="'+jui.uri+'/images/ajax-loader.gif"></div>',
+                trigger: 'More',
+                onRenderComplete: function() {
+                    $('.excerpt .thumb').lazyload({
+                        placeholder: jui.uri + '/images/thumbnail.png',
+                        threshold: 400
+                    });
+                }
+            });
+        }
     }
 
-
-    if( elments.sidebar ){
-    	var h1 = 20, h2 = 30
-    	if( $('body').hasClass('ui-navtop') ){
-    		h1 = 90, h2 = 100
-    	}
-        var rollFirst = elments.sidebar.find('.widget:eq('+(Number(jui.roll[0])-1)+')')
-        var sheight = rollFirst.height()
-        rollFirst.on('affix-top.bs.affix', function(){
-            rollFirst.css({top: 0}) 
-            sheight = rollFirst.height()
-
-            for (var i = 1; i < jui.roll.length; i++) {
-                var item = Number(jui.roll[i])-1
-                var current = elments.sidebar.find('.widget:eq('+item+')')
-                current.removeClass('affix').css({top: 0})
-            };
-        })
-
-        rollFirst.on('affix.bs.affix', function(){
-            rollFirst.css({top: h1}) 
-
-            for (var i = 1; i < jui.roll.length; i++) {
-                var item = Number(jui.roll[i])-1
-                var current = elments.sidebar.find('.widget:eq('+item+')')
-                current.addClass('affix').css({top: sheight+h2})
-                sheight += current.height() + 20
-            };
-        })
-
-        rollFirst.affix({
-            offset: {
-                top: elments.sidebar.height(),
-                bottom: (elments.footer.height()||0) + 10
-            }
-        })
+    function initSearchResult() {
+        if( $('body').hasClass('search-results') ){
+            var val = $('.search-form .form-control').val()
+            var reg = eval('/'+val+'/i')
+            $('.excerpt h2 a, .excerpt .note').each(function(){
+                $(this).html( $(this).text().replace(reg, function(w){ return '<span style="color:#FF5E52;">'+w+'</span>' }) )
+            })
+        }
     }
 
-    $('.excerpt header small').each(function() {
-        $(this).tooltip({
+    function initSidebarAffix() {
+        var elments = {
+            sidebar: $('.sidebar'),
+            footer: $('.footer')
+        }
+        if( elments.sidebar ){
+        	var h1 = 20, h2 = 30
+        	if( $('body').hasClass('ui-navtop') ){
+        		h1 = 90, h2 = 100
+        	}
+            var rollFirst = elments.sidebar.find('.widget:eq('+(Number(jui.roll[0])-1)+')')
+            var sheight = rollFirst.height()
+            rollFirst.on('affix-top.bs.affix', function(){
+                rollFirst.css({top: 0}) 
+                sheight = rollFirst.height()
+
+                for (var i = 1; i < jui.roll.length; i++) {
+                    var item = Number(jui.roll[i])-1
+                    var current = elments.sidebar.find('.widget:eq('+item+')')
+                    current.removeClass('affix').css({top: 0})
+                };
+            })
+
+            rollFirst.on('affix.bs.affix', function(){
+                rollFirst.css({top: h1}) 
+
+                for (var i = 1; i < jui.roll.length; i++) {
+                    var item = Number(jui.roll[i])-1
+                    var current = elments.sidebar.find('.widget:eq('+item+')')
+                    current.addClass('affix').css({top: sheight+h2})
+                    sheight += current.height() + 20
+                };
+            })
+
+            rollFirst.affix({
+                offset: {
+                    top: elments.sidebar.height(),
+                    bottom: (elments.footer.height()||0) + 10
+                }
+            })
+        }
+    }
+
+    function initToolTip() {
+        $('.excerpt header small').each(function() {
+            $(this).tooltip({
+                container: 'body',
+                title: '此文有 ' + $(this).text() + '张 图片'
+            })
+        })
+
+        $('.article-tags a, .post-tags a').each(function() {
+            $(this).tooltip({
+                container: 'body',
+                placement: 'bottom',
+                title: '查看关于 ' + $(this).text() + ' 的文章'
+            })
+        })
+
+        $('.cat').each(function() {
+            $(this).tooltip({
+                container: 'body',
+                title: '查看关于 ' + $(this).text() + ' 的文章'
+            })
+        })
+
+        $('.widget_tags a').tooltip({
+            container: 'body'
+        })
+
+        $('.readers a, .widget_comments a').tooltip({
             container: 'body',
-            title: '此文有 ' + $(this).text() + '张 图片'
+            placement: 'top'
         })
-    })
 
-    $('.article-tags a, .post-tags a').each(function() {
-        $(this).tooltip({
+        $('.article-meta li:eq(1) a').tooltip({
             container: 'body',
-            placement: 'bottom',
-            title: '查看关于 ' + $(this).text() + ' 的文章'
+            placement: 'bottom'
         })
-    })
 
-    $('.cat').each(function() {
-        $(this).tooltip({
+        $('.post-edit-link').tooltip({
             container: 'body',
-            title: '查看关于 ' + $(this).text() + ' 的文章'
-        })
-    })
-
-    $('.widget_tags a').tooltip({
-        container: 'body'
-    })
-
-    $('.readers a, .widget_comments a').tooltip({
-        container: 'body',
-        placement: 'top'
-    })
-
-    $('.article-meta li:eq(1) a').tooltip({
-        container: 'body',
-        placement: 'bottom'
-    })
-    $('.post-edit-link').tooltip({
-        container: 'body',
-        placement: 'right',
-        title: '去后台编辑此文章'
-    })
-
-
-    if ($('.article-content').length){
-        //$('.article-content img').attr('data-tag', 'bdshare')
-
-        video_ok()
-        $(window).resize(function(event) {
-            video_ok()
-        });
-    }
-
-    function video_ok(){
-        $('.article-content embed, .article-content video').each(function(){
-            var w = $(this).attr('width'),
-                h = $(this).attr('height')
-            if( h ){
-                $(this).css('height', $(this).width()/(w/h))
-            }
+            placement: 'right',
+            title: '去后台编辑此文章'
         })
     }
 
-    window._bd_share_config = {
-        common: {
-            "bdText": "",
-            "bdMini": "2",
-            "bdMiniList": false,
-            "bdPic": "",
-            "bdStyle": "0"
-        },
-        share: [{
-        	// "bdSize": "24",
-            bdCustomStyle: jui.uri + '/css/share.css'
-        }]
+    function initBaiduShare() {
+        window._bd_share_config = {
+            common: {
+                "bdText": "",
+                "bdMini": "2",
+                "bdMiniList": false,
+                "bdPic": "",
+                "bdStyle": "0"
+            },
+            share: [{
+            	// "bdSize": "24",
+                bdCustomStyle: jui.uri + '/css/share.css'
+            }]
+        }
+        with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)];
     }
-    with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)];
 
+    function initScroll() {
+        $('.rollto a').on('click', function() {
+            scrollTo();
+        })
 
-    $('.rollto a').on('click', function() {
-        scrollTo()
-    })
+        $(window).scroll(function() {
+            var scroller = $('.rollto');
+            document.documentElement.scrollTop + document.body.scrollTop > 200 ? scroller.fadeIn() : scroller.fadeOut();
+        })
 
-    $(window).scroll(function() {
-        var scroller = $('.rollto');
-        document.documentElement.scrollTop + document.body.scrollTop > 200 ? scroller.fadeIn() : scroller.fadeOut();
-    })
-
-    /* functions
-     * ====================================================
-     */
-    function scrollTo(name, speed) {
-        if (!speed) speed = 300
-        if (!name) {
-            $('html,body').animate({
-                scrollTop: 0
-            }, speed)
-        } else {
-            if ($(name).length > 0) {
+        function scrollTo(name, speed) {
+            if (!speed) speed = 300
+            if (!name) {
                 $('html,body').animate({
-                    scrollTop: $(name).offset().top
+                    scrollTop: 0
                 }, speed)
+            } else {
+                if ($(name).length > 0) {
+                    $('html,body').animate({
+                        scrollTop: $(name).offset().top
+                    }, speed)
+                }
             }
         }
     }
-    
 
-    var islogin = false
-    if( $('body').hasClass('logged-in') ) islogin = true
+    function bindEvents() {
+        $(document).on('click', function(e) {
+            e = e || window.event;
+            var target = e.target || e.srcElement,
+                _ta = $(target)
 
-    /* event click
-     * ====================================================
-     */
-    $(document).on('click', function(e) {
-        e = e || window.event;
-        var target = e.target || e.srcElement,
-            _ta = $(target)
+            if (_ta.hasClass('disabled')) return
+            if (_ta.parent().attr('data-event')) _ta = $(_ta.parent()[0])
+            if (_ta.parent().parent().attr('data-event')) _ta = $(_ta.parent().parent()[0])
 
-        if (_ta.hasClass('disabled')) return
-        if (_ta.parent().attr('data-event')) _ta = $(_ta.parent()[0])
-        if (_ta.parent().parent().attr('data-event')) _ta = $(_ta.parent().parent()[0])
+            var type = _ta.attr('data-event')
 
-        var type = _ta.attr('data-event')
+            switch (type) {
+                case 'like':
+                    var pid = _ta.attr('data-pid')
+                    if ( !pid || !/^\d{1,}$/.test(pid) ) return;
+                    
+                    if( !islogin ){
+                        var lslike = LS.get('_likes') || ''
+                        if( lslike.indexOf(','+pid+',')!==-1 ) return alert('你已赞！')
 
-        switch (type) {
-            case 'like':
-                var pid = _ta.attr('data-pid')
-                if ( !pid || !/^\d{1,}$/.test(pid) ) return;
-                
-                if( !islogin ){
-                    var lslike = LS.get('_likes') || ''
-                    if( lslike.indexOf(','+pid+',')!==-1 ) return alert('你已赞！')
-
-                    if( !lslike ){
-                        LS.set('_likes', ','+pid+',')
-                    }else{
-                        if( lslike.length >= 160 ){
-                            lslike = lslike.substring(0,lslike.length-1)
-                            lslike = lslike.substr(1).split(',')
-                            lslike.splice(0,1)
-                            lslike.push(pid)
-                            lslike = lslike.join(',')
-                            LS.set('_likes', ','+lslike+',')
+                        if( !lslike ){
+                            LS.set('_likes', ','+pid+',')
                         }else{
-                            LS.set('_likes', lslike+pid+',')
+                            if( lslike.length >= 160 ){
+                                lslike = lslike.substring(0,lslike.length-1)
+                                lslike = lslike.substr(1).split(',')
+                                lslike.splice(0,1)
+                                lslike.push(pid)
+                                lslike = lslike.join(',')
+                                LS.set('_likes', ','+lslike+',')
+                            }else{
+                                LS.set('_likes', lslike+pid+',')
+                            }
                         }
                     }
-                }
 
-                $.ajax({
-                    url: jui.uri + '/actions/index.php',
-                    type: 'POST',
-                    dataType: 'json',
-                    data: {
-                        key: 'like',
-                        pid: pid
-                    },
-                    success: function(data, textStatus, xhr) {
-                        //called when successful
-                        // console.log(data)
-                        if (data.error) return false;
-                        // console.log( data.response )
-                        // if( data.type === 1 ){
-                        _ta.toggleClass('actived')
-                        _ta.find('span').html(data.response)
-                        // }
-                    },
-                    error: function(xhr, textStatus, errorThrown) {
-                        //called when there is an error
-                        console.log(xhr)
-                    }
-                });
+                    $.ajax({
+                        url: jui.uri + '/actions/index.php',
+                        type: 'POST',
+                        dataType: 'json',
+                        data: {
+                            key: 'like',
+                            pid: pid
+                        },
+                        success: function(data, textStatus, xhr) {
+                            //called when successful
+                            // console.log(data)
+                            if (data.error) return false;
+                            // console.log( data.response )
+                            // if( data.type === 1 ){
+                            _ta.toggleClass('actived')
+                            _ta.find('span').html(data.response)
+                            // }
+                        },
+                        error: function(xhr, textStatus, errorThrown) {
+                            //called when there is an error
+                            console.log(xhr)
+                        }
+                    });
 
-                break;
-            case 'comment-user-change':
-                $('#comment-author-info').slideDown(300)
-                $('#comment-author-info input:first').focus()
+                    break;
+                case 'comment-user-change':
+                    $('#comment-author-info').slideDown(300)
+                    $('#comment-author-info input:first').focus()
+                    break;
+                case 'login':
+                    $('#modal-login').modal('show')
+                    break;
+            }
+        })
+    }
 
-                break;
-            case 'login':
-                $('#modal-login').modal('show')
-
-
-                break;
-        }
-    })
-
-
-
+    //comment module
     $('.commentlist .url').attr('target','_blank')
-	
-	/*$('#comment-author-info p input').focus(function() {
-		$(this).parent('p').addClass('on')
-	})
-	$('#comment-author-info p input').blur(function() {
-		$(this).parent('p').removeClass('on')
-	})
-
-	$('#comment').focus(function(){
-		if( $('#author').val()=='' || $('#email').val()=='' ) $('.comt-comterinfo').slideDown(300)
-	})*/
-
     var edit_mode = '0',
         txt1 = '<div class="comt-tip comt-loading">正在提交, 请稍候...</div>',
         txt2 = '<div class="comt-tip comt-error">#</div>',
@@ -479,7 +433,8 @@ jQuery.cookie = function(name, value, options) {
         });
         return false
     });
-    addComment = {
+
+    var addComment = {
         moveForm: function(commId, parentId, respondId, postId, num) {
             var t = this,
                 div, comm = t.I(commId),
@@ -549,7 +504,4 @@ jQuery.cookie = function(name, value, options) {
             wait = 15
         }
     }
-
-
-
 })(jQuery)
