@@ -3,7 +3,7 @@
 </section>
 <?php } ?>
 <footer class="footer">
-    &copy; <?php echo date('Y'); ?> <a href="<?php bloginfo('url'); ?>"><?php bloginfo('name'); ?></a> &nbsp; <?php echo __('感谢', 'haoui') ?> <a href="http://www.daqianduan.com" target="_blank"><?php echo __('浩子', 'haoui') ?></a> <?php echo __('设计开发', 'haoui') ?> &nbsp; <?php echo _hui('footer_seo') ?>
+    &copy; <?php echo date('Y'); ?> <a href="<?php bloginfo('url'); ?>"><?php bloginfo('name'); ?></a> &nbsp; <?php echo _hui('footer_seo') ?>
     <?php echo _hui('trackcode') ?>
 </footer>
 <?php if( _hui('layout') !== 'ui-navtop' ){ ?>

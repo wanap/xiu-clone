@@ -1203,7 +1203,7 @@ height: 48px;
 .comt-comterinfo{padding:20px 0 0;color:#444;text-align: center;}
 .comt-comterinfo ul{padding: 0;margin: 0 auto;width:320px;list-style: none;text-align: left;}
 .comt-comterinfo li{margin-bottom:10px}
-.comt-comterinfo input{margin-right:10px;position:relative;*bottom:-3px;border: 2px solid #CCD4D9;border-radius: 2px;height:34px;padding: 3px 5px;outline: none;width: 220px;box-shadow: none}
+.comt-comterinfo input{margin-right:10px;position:relative;*bottom:-3px;border:1px solid #CCD4D9;border-radius: 2px;height:34px;padding: 3px 5px;outline: none;width: 220px;box-shadow: none}
 #cancel-comment-reply-link{display:none;font-size:12px;text-align: center;margin-top: 7px;color: #999;}
 #cancel-comment-reply-link:hover{color: #FF5E52;}
 .comment #cancel-comment-reply-link{display:block}
@@ -1514,7 +1514,7 @@ height: 48px;
 /*.ui-navtop .article-header{text-align: center;border-bottom-width: 1px;}*/
 .ui-navtop .article-meta li{float: none;display: inline-block;}
 .ui-navtop .relates a img{height: 156px;}
-.ui-navtop .relates a p{height:40px; overflow:hidden;}
+.ui-navtop .relates a p{height:40px; overflow:hidden; margin-bottom:0;}
 .ui-navtop .user-signin{position: absolute;top: 16px;right: 0;margin-top: 0}
 .ui-navtop .widget_postlist .items-02 .thumb{height: 130px;}
 
@@ -1645,6 +1645,8 @@ height: 48px;
     .relates span{display: none;}
     .relates img{display: none;}
     .relates a{display: inline-block; margin-right: 0;}
+
+    .ui-navtop .relates a p{height:20px; overflow:hidden;}
 }
 @media (max-width:520px){
   .sticky img, .focus .thumbnail .thumb, .relates a img,

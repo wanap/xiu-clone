@@ -376,7 +376,7 @@ function hui_get_share(){
         $html .= '<a class="bds_'.$value.'" data-cmd="'.$value.'"></a>';
     }
 
-    return __('分享到：', 'haoui').$html.'<a class="bds_more" data-cmd="more">'.__('更多', 'haoui').'</a> (<a class="bds_count" data-cmd="count"></a>)';
+    return __('<span class="share-text">分享到：</span>', 'haoui').$html.'<a class="bds_more" data-cmd="more">'.__('更多', 'haoui').'</a><span class="share-text">(</span><a class="bds_count" data-cmd="count"></a><span class="share-text">)</span>';
 }
 
 
