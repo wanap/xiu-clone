@@ -37,7 +37,6 @@ get_header(); ?>
                 <li>
                     <time><?php the_time('d'); ?>日</time>
                     <a href="<?php the_permalink(); ?>"><?php the_title(); ?> </a>
-                    <span class="text-muted"><?php echo hui_get_comment_number() ?></span>
                 </li>
             <?php endforeach; ?>
             </ul>

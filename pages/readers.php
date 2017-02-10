@@ -27,7 +27,7 @@ function readers_wall( $outer='1', $timer='100', $limit='200' ){
 			<div class="readers">
 				<?php readers_wall( $outer='1', $timer=_hui('readwall_limit_time'), $limit=_hui('readwall_limit_number') ); ?>
 			</div>
-		<?php comments_template('', true); endwhile;  ?>
+		<?php endwhile;  ?>
 	</div>
 </div>
 <?php get_sidebar(); ?>

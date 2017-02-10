@@ -14,7 +14,6 @@
 				<li><?php echo __('分类：', 'haoui');the_category(' / '); ?></li>
 				<?php echo _hui('post_from_s') && hui_get_post_from() ? '<li>'.hui_get_post_from().'</li>' : '' ?>
 				<li><?php echo hui_get_views() ?></li>
-				<li><?php echo hui_get_comment_number() ?></li>
 				<li><?php edit_post_link('['.__('编辑', 'haoui').']'); ?></li>
 			</ul>
 		</header>
@@ -46,7 +45,6 @@
 			}
 		?>
 		<?php if( _hui('ads_post_03_s') ) echo '<div class="ads ads-content ads-comment">'.hui_get_adcode('ads_post_03').'</div>'; ?>
-		<?php comments_template('', true); ?>
 	</div>
 </div>
 <?php get_sidebar(); get_footer(); ?>

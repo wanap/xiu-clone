@@ -17,8 +17,6 @@ get_header();
 				<?php wp_list_bookmarks(); ?>
 			</ul>
 
-			<?php comments_template('', true); ?>
-
 		<?php endwhile;  ?>
 	</div>
 </div>

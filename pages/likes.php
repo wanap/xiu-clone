@@ -29,7 +29,6 @@ get_header();
 		    wp_reset_query();
 		?>
 		</ul>
-		<?php comments_template('', true); ?>
 	</div>
 </div>
 <?php get_footer(); ?>

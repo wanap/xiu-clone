@@ -57,7 +57,6 @@ while ( have_posts() ) : the_post();
 	    '<p class="text-muted views">';
 	    if( _hui('post_link_excerpt_s') ) hui_post_link();
 	    echo hui_get_views(), 
-	    ($p_meta && $p_meta['comm']) ? '<span class="post-comments">'.hui_get_comment_number().'</span>' : '',
 	    hui_get_post_like($class='post-like'),
 	    the_tags('<span class="post-tags">'.__('标签：', 'haoui'), ' / ', '</span>'), 
 	    '</p>';

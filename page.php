@@ -8,8 +8,6 @@
 			<?php the_content(); ?>
 		</article>
 		<?php endwhile;  ?>
-		<p>&nbsp;</p>
-		<?php comments_template('', true); ?>
 	</div>
 </div>
 <?php get_sidebar(); get_footer(); ?>
