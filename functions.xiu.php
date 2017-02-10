@@ -364,10 +364,8 @@ function hui_get_share(){
         'qzone',
         'tsina',
         'weixin',
-        'tqq',
         'sqq',
         'renren',
-        'ty',
         'copy'
     );
 
