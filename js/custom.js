@@ -89,17 +89,31 @@ jQuery.cookie = function(name, value, options) {
 
     function initLazyLoad() {
         // lazy avatar
-        $('.avatar').lazyload({
+        $('.content .avatar').lazyload({
             placeholder: jui.uri + '/images/avatar-default.png',
             event: 'scrollstop'
         });
 
-        $('.thumb').lazyload({
+        $('.sidebar .avatar').lazyload({
+            placeholder: jui.uri + '/images/avatar-default.png',
+            event: 'scrollstop'
+        });
+
+        $('.content .thumb').lazyload({
             placeholder: jui.uri + '/images/thumbnail.png',
             event: 'scrollstop'
         });
 
-        $('.wp-smiley').lazyload({
+        $('.sidebar .thumb').lazyload({
+            placeholder: jui.uri + '/images/thumbnail.png',
+            event: 'scrollstop'
+        });
+
+        $('.content .wp-smiley').lazyload({
+            event: 'scrollstop'
+        });
+
+        $('.sidebar .wp-smiley').lazyload({
             event: 'scrollstop'
         });
     }
