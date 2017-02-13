@@ -581,7 +581,7 @@ function hui_get_thumbnail( $single=true, $must=true ) {
         $i = 0;
         foreach($images as $src){
             $i++;
-            $src2 = wp_get_attachment_image_src(hui_get_attachment_id_from_src($src), 'thumbnail');
+            $src2 = wp_get_attachment_image_src(hui_get_attachment_id_from_src($src), 'full');
             $src2 = $src2[0];
             if( !$src2 && _hui('list_thumb_out') ){
                 $src = $src;
