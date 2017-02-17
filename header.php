@@ -5,6 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
 <meta http-equiv="Cache-Control" content="no-siteapp">
+<meta name="baidu-site-verification" content="rWDt1HEIs7" />
 <title><?php $t = trim(wp_title('', false)); if($t) echo $t._hui('connector'); else ''; bloginfo('name'); if (is_home ()) echo _hui('connector').get_option('blogdescription'); if ($paged > 1) echo '-Page ', $paged; ?></title>
 <link rel="icon" href="<?php echo HOME_URI.'/favicon.ico' ?>" type="image/x-icon" />
 <link rel="shortcut icon" href="<?php echo HOME_URI.'/favicon.ico' ?>">

@@ -16,7 +16,7 @@ define( 'THUMB_DEFAULT'  , THEME_URI.'/images/thumbnail.png' );
 define( 'MOD_URI'        , THEME_FILES.'/modules' );
 define( 'WIDGET_URI'     , THEME_FILES.'/widgets' );
 define( 'THEME_NAME'     , 'xiu' );
-define( 'THEME_VERSION'  , '4.1' );
+define( 'THEME_VERSION'  , '4.2' );
 
 
 if ( ! function_exists( '_hui' ) ) {
