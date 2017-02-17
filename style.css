@@ -706,7 +706,7 @@ body{margin:0;font-size:14px;line-height:20px;color:#444;overflow-x: hidden;back
 .sticky li{width: 25%;float: left;margin-bottom: 20px;height: 178px;overflow: hidden;}
 .sticky li a{display:block;margin-right: 10px;position: relative;color: #666;}
 .sticky a:hover{color: #FF5E52;}
-.sticky img{display:block;max-width: 100%;margin-bottom: 5px;height: 132px;}
+.sticky img{display:block; width:100%; height:132px; margin-bottom:5px;}
 
 
 .focusmo{overflow: hidden;margin-bottom: 10px;}
