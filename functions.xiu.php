@@ -46,6 +46,11 @@ remove_filter('the_content_feed','wp_staticize_emoji');
 remove_filter('comment_text_rss','wp_staticize_emoji');
 remove_filter('wp_mail','wp_staticize_emoji_for_email');
 
+//完全移除wp-json链接
+remove_action( 'template_redirect', 'rest_output_link_header', 11, 0 );
+remove_action( 'wp_head','rest_output_link_wp_head' );
+remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
+
 
 /* 
  * languages
