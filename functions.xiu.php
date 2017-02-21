@@ -51,6 +51,9 @@ remove_action( 'template_redirect', 'rest_output_link_header', 11, 0 );
 remove_action( 'wp_head','rest_output_link_wp_head' );
 remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
 
+//移除WordPress头部加载DNS预获取（dns-prefetch）
+remove_action( 'wp_head', 'wp_resource_hints', 2 );
+
 
 /* 
  * languages
