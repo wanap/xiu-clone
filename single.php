@@ -19,7 +19,7 @@
 		</header>
 		<?php if( _hui('ads_post_01_s') ) echo '<div class="ads ads-content ads-post">'.hui_get_adcode('ads_post_01').'</div>'; ?>
 		<article class="article-content">
-			<?php the_content(); ?>
+			<?php echo get_the_content(); ?>
 		</article>
 		<?php wp_link_pages('link_before=<span>&link_after=</span>&before=<div class="article-paging">&after=</div>&next_or_number=number'); ?>
 		<?php endwhile;  ?>

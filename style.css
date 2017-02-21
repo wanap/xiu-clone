@@ -115,7 +115,9 @@ code{padding:2px 4px;font-size:90%;color:#c7254e;white-space:nowrap;background-c
 kbd{padding:2px 4px;font-size:90%;color:#fff;background-color:#333;border-radius:3px;box-shadow:inset 0 -1px 0 rgba(0, 0, 0, .25)}
 pre{display:block;padding:9.5px;margin:0 0 10px;font-size:13px;line-height:1.42857143;color:#333;word-wrap:break-word;background-color:#f5f5f5;border:1px solid #ccc;border-radius:4px}
 pre code{padding:0;font-size:inherit;color:inherit;white-space:pre-wrap;background-color:transparent;border-radius:0}
-
+ins {
+    text-decoration: none;
+}
 
 
 fieldset{min-width:0;padding:0;margin:0;border:0}
@@ -875,6 +877,17 @@ a.post-linkto:hover{opacity: 1;filter:alpha(opacity=100);color: #fff;}
 .article-content a{color:#428bca;text-decoration:underline}
 .article-content a:hover{color:#FF5E52}
 
+.article-content a.item{position:relative; display:block; width:510px; margin:10px 0; padding:20px; text-decoration:none;background:#f7f7f7; clear:none!important;}
+.article-content a.item:hover{background:#eee;}
+.article-content a.item .item-pic{float:left; overflow:hidden;width:140px; height:140px; margin-right:20px;}
+.article-content a.item .item-info{position:relative; overflow:hidden;height:140px;}
+.article-content a.item .item-title{display:-webkit-box; overflow:hidden;line-height:1.5; color:#333; -webkit-line-clamp:2; -webkit-box-orient:vertical; }
+.article-content a.item .item-price{position:absolute; bottom:5px; left:0; font-family:HelveticaNeue-Light,"Helvetica Neue Light","Helvetica Neue",arial;}
+.article-content a.item .price-new{color:#f50;}
+.article-content a.item .price-new strong{font-size:24px; font-weight:400;}
+.article-content a.item .price-old{margin-left:10px; color:#999;}
+.article-content a.item .item-btn{position:absolute; right:0; bottom:5px; width:100px; height:30px; text-align:center;line-height:30px; color:#f50; border:1px solid #f50; -webkit-border-radius:4px; -moz-border-radius:4px; border-radius:4px; }
+.article-content a.item:after{display:block!important; clear:both; height:0;content:""; }
 
 .post-copyright{clear: both;background-color:#f2f2f2;font-size:12px;color:#999;padding:6px 15px 5px;border-radius:2px;text-align:center;margin-top: 10px;}
 .post-copyright a{color:#999;text-decoration:none;}
