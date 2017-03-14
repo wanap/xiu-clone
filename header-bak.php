@@ -20,43 +20,21 @@
 <section class="container">
 <header class="header">
 <?php } ?>
-	<div class="navtop clearfix">
-		<?php hui_nav_menu('navmenu', 'menu'); ?>
-		<div class="nav-controls">
-			<a class="qrcode" href="#">关注微信</a>
-			<div class="navlogins">
-				<a href="#">登录</a>
-				<span></span>
-				<a href="#">注册</a>
-			</div>
-		</div>
+	<?php hui_logo(); ?>
+	<?php hui_nav_menu(); ?>
+	<?php if( _hui('layout') == 'ui-navtop' ){
+		if( _hui('search_baidu') && _hui('search_baidu_code') ){
+			echo _hui('search_baidu_code');
+		}else{
+			echo '<form method="get" class="search-form" action="'.esc_url( home_url( '/' ) ).'" ><input class="form-control" name="s" type="text" placeholder="输入关键字" value="'.htmlspecialchars($s).'"><input class="btn" type="submit" value="搜索"></form>';
+		}
+	} ?>
+	<div class="slinks">
+		<?php echo _hui('menu_links') ?>
 	</div>
 <?php if( _hui('layout') == 'ui-navtop' ){ ?>
 </div>
 </header>
-<div class="container">
-	<div class="screen-box">
-		<div class="navcat-box cleafix">
-		    <span class="hot">HOT<em class="arrow-right"></em></span>
-		    <?php hui_nav_menu('navcat', 'nav'); ?>
-		    <div class="more-tags">
-			    <span class="more-word">更多品类>><i class="icon-down"></i></span>
-			    <div class="more-tags-ul">
-			        <a href="#">运动户外</a>
-			        <a href="#">家居家装</a>
-			        <a href="#">汽车用品</a>
-			    </div>
-			</div>
-		</div>
-		<!--右边再加搜索框-->
-		<div class="search-box">
-			<form method="get" action="http://www.ankangbuy.com/">
-				<input class="search-input" name="s" type="text" placeholder="搜搜看看" value="">
-				<input class="search-btn" type="submit" value="搜索">
-			</form>
-		</div>
-	</div>
-</div>
 <section class="container">
 <?php }else{ ?>
 </header>

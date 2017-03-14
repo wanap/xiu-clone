@@ -16,7 +16,7 @@ define( 'THUMB_DEFAULT'  , THEME_URI.'/images/thumbnail.png' );
 define( 'MOD_URI'        , THEME_FILES.'/modules' );
 define( 'WIDGET_URI'     , THEME_FILES.'/widgets' );
 define( 'THEME_NAME'     , 'xiu' );
-define( 'THEME_VERSION'  , '4.7' );
+define( 'THEME_VERSION'  , '4.92' );
 
 
 if ( ! function_exists( '_hui' ) ) {
@@ -144,7 +144,10 @@ if( _hui('layout') !== 'ui-c2' ){
 */
 if (function_exists('register_nav_menus')){
     register_nav_menus( array(
-        'nav' => __('网站导航', 'haoui')
+        'nav' => __('分类导航', 'haoui')
+    ));
+    register_nav_menus( array(
+        'menu' => __('顶部菜单', 'haoui')
     ));
 }
 
