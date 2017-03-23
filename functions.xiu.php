@@ -144,13 +144,15 @@ if( _hui('layout') !== 'ui-c2' ){
 */
 if (function_exists('register_nav_menus')){
     register_nav_menus( array(
-        'nav' => __('分类导航', 'haoui')
+        'nav' => __('分类category菜单', 'haoui')
     ));
     register_nav_menus( array(
-        'menu' => __('顶部菜单', 'haoui')
+        'pc_menu' => __('PC导航菜单', 'haoui')
+    ));
+    register_nav_menus( array(
+        'h5_menu' => __('H5导航菜单', 'haoui')
     ));
 }
-
 
 /* 
  * nav

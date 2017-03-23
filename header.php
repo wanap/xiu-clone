@@ -11,6 +11,7 @@
 <link rel="shortcut icon" href="<?php echo HOME_URI.'/favicon.ico' ?>">
 <?php wp_head(); ?>
 <!--[if lt IE 9]><script src="<?php echo THEME_URI ?>/js/html5.js"></script><![endif]-->
+<link rel="stylesheet" type="text/css" href="<?php bloginfo('template_url');?>/iconfont/iconfont.css" />
 </head>
 <body <?php body_class( hui_bodyclass() ); ?>>
 <?php if( _hui('layout') == 'ui-navtop' ){ ?>
@@ -21,7 +22,7 @@
 <header class="header">
 <?php } ?>
 	<div class="navtop clearfix">
-		<?php hui_nav_menu('navmenu', 'menu'); ?>
+		<?php hui_nav_menu('navmenu', 'pc_menu'); ?>
 		<div class="nav-controls">
 			<a class="qrcode" href="#">关注微信</a>
 			<div class="navlogins">
@@ -57,6 +58,28 @@
 		</div>
 	</div>
 </div>
+
+<!--手机端导航-->
+<div class="main-title clearfix">
+    <a href="#" class="main-logo">值得买</a>
+    <div class="search">
+        <form action="/index.php?r=index/search" method="get">
+            <span class="search_submit"><i class="iconfont icon-search"></i></span>
+            <input type="text" placeholder="好宝贝 等你搜" name="s" autocomplete="off">
+        </form>
+    </div>
+    <a id="J_expand_cat" class="main-icon" href="javascript:void(0)">
+    	<i class="iconfont icon-menu"></i>
+        <span>分类</span>
+    </a>
+</div>
+<nav id="show-top-menu">
+    <div class="mask" id="menu-mask"></div>
+    <div class="menu-content">
+    	<?php hui_nav_menu('main-cat', 'nav'); ?>
+    </div>
+</nav>
+
 <section class="container">
 <?php }else{ ?>
 </header>

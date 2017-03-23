@@ -350,6 +350,14 @@ jQuery.cookie = function(name, value, options) {
                     break;
             }
         })
+
+        $("#J_expand_cat").on("click", function(e) {
+            $("#show-top-menu").toggle();
+        })
+
+        $("#menu-mask").on("click", function(e) {
+            $("#show-top-menu").hide();
+        })
     }
 
     //comment module

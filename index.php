@@ -12,6 +12,14 @@
 
 			if( !$paged && _hui('sticky_s') ) hui_moloader('hui_posts_sticky');
 		?>
+
+		<!--菜单配置-->
+		<div class="index-wrapper">
+		    <div class="icon-link-wrapper">
+		    	<?php hui_nav_menu('main-menu-h5', 'h5_menu'); ?>
+		    </div>
+		</div>
+
 		<?php echo _hui('ads_index_02_s') ? '<div class="ads ads-content">'.hui_get_adcode('ads_index_02').'</div>' : '' ?>
 		<?php 
 			if( $paged && $paged > 1 ){
