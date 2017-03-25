@@ -41,7 +41,7 @@
 		    <span class="hot">HOT<em class="arrow-right"></em></span>
 		    <?php hui_nav_menu('navcat', 'nav'); ?>
 		    <div class="more-tags">
-			    <span class="more-word">更多品类>><i class="icon-down"></i></span>
+                <span class="more-word">更多品类 <i class="iconfont icon-arrow-right"></i></span>
 			    <div class="more-tags-ul">
 			        <a href="#">运动户外</a>
 			        <a href="#">家居家装</a>
@@ -65,7 +65,9 @@
     <a href="<?php echo get_bloginfo('url') ?>" class="main-logo">聚超值</a>
     <div class="search">
         <form action="<?php echo esc_url( home_url( '/' ) )?>" method="get" id="sForm">
-            <span class="search_submit" onclick="javascript:document.getElementById('sForm').submit();"><i class="iconfont icon-search"></i></span>
+            <span class="search_submit" onclick="javascript:document.getElementById('sForm').submit();">
+                <i class="iconfont icon-search-s"></i>
+            </span>
             <input type="text" placeholder="好宝贝 等你搜" name="s" value="<?php echo htmlspecialchars($s) ?>">
         </form>
     </div>

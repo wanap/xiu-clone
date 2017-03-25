@@ -1608,14 +1608,16 @@ a.post-linkto:hover{opacity: 1;filter:alpha(opacity=100);color: #fff;}
 .more-tags:hover{border:1px solid #dcdcdc;}
 .more-tags:hover .more-tags-ul{display:block;}
 .more-tags:hover .more-word{background-color:#fff;}
-.more-word{position:relative; z-index:1; display:block; height:46px; padding:0 8px;line-height:40px; }
-.more-word i.icon-down{position:absolute; top:12px; right:5px; -webkit-transition:all .3s ease;transition:all .3s ease; color:#767676; }
+.more-word{position:relative; z-index:1; display:block; height:46px; padding:0 8px;line-height:40px; color:#666;}
+.more-word i{display:inline-block; font-size:13px; -webkit-transition:all .2s ease;transition:all .2s ease; color:#767676; }
+.more-tags:hover .more-word i{color:#ff5e52; -moz-transform:rotate(90deg); -webkit-transform:rotate(90deg); transform:rotate(90deg);}
+
 .more-tags-ul{position:absolute; top:48px; right:0; left:0; display:none;padding:12px 0 12px 20px; text-align:left; border:1px solid #dcdcdc; background-color:#fff; box-shadow:1px 1px 5px rgba(0, 0, 0, .08); }
 .more-tags-ul a{display:inline-block;padding-right:25px; line-height:30px; color:#333; }
 .search-box{position:relative; float:right; margin-top:10px; margin-right:20px; line-height:normal; border:1px solid #ebebeb;border-radius:4px; background:#ebebeb; }
-.search-box .search-input{float:left; width:300px; height:28px; padding-left:25px; font-size:14px; line-height:28px; border:0; outline:0;background:#ebebeb; }
+.search-box .search-input{float:left; width:300px; height:28px; padding-left:30px; font-size:14px; line-height:28px; border:0; outline:0;background:#ebebeb; }
 .search-box .search-input:focus{border:0; outline:0; }
-.search-box i{position:absolute; left:6px; top:5px;}
+.search-box i{position:absolute; left:8px; top:6px;}
 .search-btn{float:left; height:28px; padding:0 15px; cursor:pointer; text-align:right; line-height:28px; color:#b1b1b1; border:0; background:#ebebeb;}
 .search-box .search-input:focus ~ i, .search-box .search-input:focus ~ .search-btn{color:#ff5e52;}
 
