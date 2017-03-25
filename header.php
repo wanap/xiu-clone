@@ -61,7 +61,7 @@
 
 <!--手机端导航-->
 <div class="main-title clearfix">
-    <a href="<?php echo get_bloginfo('url') ?>" class="main-logo">值得买</a>
+    <a href="<?php echo get_bloginfo('url') ?>" class="main-logo">聚超值</a>
     <div class="search">
         <form action="<?php echo esc_url( home_url( '/' ) )?>" method="get">
             <span class="search_submit"><i class="iconfont icon-search"></i></span>
