@@ -63,8 +63,8 @@
 <div class="main-title clearfix">
     <a href="<?php echo get_bloginfo('url') ?>" class="main-logo">聚超值</a>
     <div class="search">
-        <form action="<?php echo esc_url( home_url( '/' ) )?>" method="get">
-            <span class="search_submit"><i class="iconfont icon-search"></i></span>
+        <form action="<?php echo esc_url( home_url( '/' ) )?>" method="get" id="sForm">
+            <span class="search_submit" onclick="javascript:document.getElementById('sForm').submit();"><i class="iconfont icon-search"></i></span>
             <input type="text" placeholder="好宝贝 等你搜" name="s" value="<?php echo htmlspecialchars($s) ?>">
         </form>
     </div>
