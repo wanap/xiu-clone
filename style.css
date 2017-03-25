@@ -1624,7 +1624,7 @@ a.post-linkto:hover{opacity: 1;filter:alpha(opacity=100);color: #fff;}
 @media (min-device-width: 320px) and (max-device-width:568px){
   .header{display:none;}
   .screen-box{display:none;}
-  .carousel{position:relative; margin-top:-10px; margin-right:-10px; margin-bottom:0; margin-left:-10px;}
+  .carousel{position:relative; margin-right:-10px; margin-bottom:0; margin-left:-10px;}
   .content, .ui-navtop .content{padding-top:44px;}
 
   #show-top-menu{position:fixed; z-index:100;top:44px; display:none; width:100%; height:100%; }

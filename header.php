@@ -51,8 +51,8 @@
 		</div>
 		<!--右边再加搜索框-->
 		<div class="search-box">
-			<form method="get" action="http://www.ankangbuy.com/">
-				<input class="search-input" name="s" type="text" placeholder="搜搜看看" value="">
+			<form method="get" action="<?php echo esc_url( home_url( '/' ) )?>">
+				<input class="search-input" name="s" type="text" placeholder="搜搜看看" value="<?php echo htmlspecialchars($s) ?>">
 				<input class="search-btn" type="submit" value="搜索">
 			</form>
 		</div>
@@ -61,11 +61,11 @@
 
 <!--手机端导航-->
 <div class="main-title clearfix">
-    <a href="#" class="main-logo">值得买</a>
+    <a href="<?php echo get_bloginfo('url') ?>" class="main-logo">值得买</a>
     <div class="search">
-        <form action="/index.php?r=index/search" method="get">
+        <form action="<?php echo esc_url( home_url( '/' ) )?>" method="get">
             <span class="search_submit"><i class="iconfont icon-search"></i></span>
-            <input type="text" placeholder="好宝贝 等你搜" name="s" autocomplete="off">
+            <input type="text" placeholder="好宝贝 等你搜" name="s" value="<?php echo htmlspecialchars($s) ?>">
         </form>
     </div>
     <a id="J_expand_cat" class="main-icon" href="javascript:void(0)">
