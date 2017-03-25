@@ -53,6 +53,7 @@
 		<div class="search-box">
 			<form method="get" action="<?php echo esc_url( home_url( '/' ) )?>">
 				<input class="search-input" name="s" type="text" placeholder="搜搜看看" value="<?php echo htmlspecialchars($s) ?>">
+				<i class="iconfont icon-search"></i>
 				<input class="search-btn" type="submit" value="搜索">
 			</form>
 		</div>

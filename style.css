@@ -1614,8 +1614,10 @@ a.post-linkto:hover{opacity: 1;filter:alpha(opacity=100);color: #fff;}
 .more-tags-ul a{display:inline-block;padding-right:25px; line-height:30px; color:#333; }
 .search-box{position:relative; float:right; margin-top:10px; margin-right:20px; line-height:normal; border:1px solid #ebebeb;border-radius:4px; background:#ebebeb; }
 .search-box .search-input{float:left; width:300px; height:28px; padding-left:25px; font-size:14px; line-height:28px; border:0; outline:0;background:#ebebeb; }
-.search-box .search-input:focus{color:#ff5e52;border:0; outline:0; }
+.search-box .search-input:focus{border:0; outline:0; }
+.search-box i{position:absolute; left:6px; top:5px;}
 .search-btn{float:left; height:28px; padding:0 15px; cursor:pointer; text-align:right; line-height:28px; color:#b1b1b1; border:0; background:#ebebeb;}
+.search-box .search-input:focus ~ i, .search-box .search-input:focus ~ .search-btn{color:#ff5e52;}
 
 /*移动导航*/
 .main-title{display: none;}
