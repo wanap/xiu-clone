@@ -23,14 +23,6 @@
 <?php } ?>
 	<div class="navtop clearfix">
 		<?php hui_nav_menu('navmenu', 'pc_menu'); ?>
-		<div class="nav-controls">
-			<a class="qrcode" href="#">关注微信</a>
-			<div class="navlogins">
-				<a href="#">登录</a>
-				<span></span>
-				<a href="#">注册</a>
-			</div>
-		</div>
 	</div>
 <?php if( _hui('layout') == 'ui-navtop' ){ ?>
 </div>
@@ -40,14 +32,6 @@
 		<div class="navcat-box cleafix">
 		    <span class="hot">HOT<em class="arrow-right"></em></span>
 		    <?php hui_nav_menu('navcat', 'nav'); ?>
-		    <div class="more-tags">
-                <span class="more-word">更多品类 <i class="iconfont icon-arrow-right"></i></span>
-			    <div class="more-tags-ul">
-			        <a href="#">运动户外</a>
-			        <a href="#">家居家装</a>
-			        <a href="#">汽车用品</a>
-			    </div>
-			</div>
 		</div>
 		<!--右边再加搜索框-->
 		<div class="search-box">
