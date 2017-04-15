@@ -1016,3 +1016,16 @@ function hui_head_css() {
 
     if( $styles ) echo '<style>'.$styles.'</style>';
 }
+
+
+/*新添加方法*/
+function isInWexin() {
+    return false !== strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'micromessenger');
+}
+
+function wx_config() {
+    //切记线上虚拟机主题下的文件夹不能带大写字母，本地环境就没问题
+    require_once THEME_FILES . '/wechatsdk/jssdk.php';
+    $jssdk = new JSSDK("wx98abc98825ac1255", "afef61faeaf33740e5ed8ca0146f0e76");
+    return $jssdk->GetSignPackage();
+}

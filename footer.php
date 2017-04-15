@@ -51,5 +51,39 @@ window.jui = {
     })(window,document);
 </script>
 <?php wp_footer(); ?>
+<?php if(isInWexin()) { 
+    $wxShareConfig = wx_config();
+?>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script>
+    wx.config({
+        debug: false,
+        appId: '<?php echo $wxShareConfig["appId"];?>',
+        timestamp: '<?php echo $wxShareConfig["timestamp"];?>',
+        nonceStr: '<?php echo $wxShareConfig["nonceStr"];?>',
+        signature: '<?php echo $wxShareConfig["signature"];?>',
+        jsApiList: [
+            'onMenuShareTimeline',
+            'onMenuShareAppMessage'
+        ]
+    });
+    wx.ready(function () {
+        var shareSettiing = {
+            title: document.title,
+            desc: document.title,
+            link: window.location.href,
+            imgUrl: 'http://www.ankangbuy.com/share/zhi.png',
+            success: function (res) {
+                //alert('已分享');
+            },
+            fail: function (res) {
+                alert(JSON.stringify(res));
+            }
+        };
+        wx.onMenuShareAppMessage(shareSettiing);
+        wx.onMenuShareTimeline(shareSettiing);
+    });
+</script>
+<?php } ?>
 </body>
 </html>
